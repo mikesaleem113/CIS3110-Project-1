@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .focused{
+            border-color: red !important;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent"><br>
+          <form action="index.html" id="form">
+            <input type="text" id="username" name="username" class="fadeIn second" placeholder="Username">
+            <input type="text" id="password" name="password" class="fadeIn third" placeholder="Password">
+            <input type="button" id="login" class="fadeIn fourth" value="Log In">
+          </form>
+        </div>
+      </div>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#login").click(function(){
+                if($('#username').val() == "" ){         
+                    $("#username").addClass("focused");
+                    return false;
+                }else if($('#password').val() == "" ){         
+                    $("#password").addClass("focused");
+                    return false;
+                }
+                else{
+                    $.cookie('cookie_username', $('#username').val(), { expires: 7 });
+                }       
+                window.location = $(this).parent('form').attr("action");
+            });
+        });
+    </script>
+</body>
+</html>
